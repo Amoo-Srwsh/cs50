@@ -1,3 +1,4 @@
+//Copyright Amoo-Srwsh
 #include <stdio.h>
 #include <cs50.h>
 #include <math.h>
