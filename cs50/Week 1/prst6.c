@@ -34,6 +34,28 @@ int find_length(long long number)
     int len;
     for (len = 0; number !=0; number /=10, len++);
     return len;
+    /*
+    ///////input//////
+    4003600000000014   || remove 4 and ++len
+    //////////////////
+    
+    Step (1)
+    400360000000001
+    len = (1)
+    
+    Step (2)
+    40036000000000
+    len = (2)
+    
+    Step (3)
+    4003600000000
+    len = (3)
+    .
+    .
+    .
+    .
+    .
+    */
 }
 
 bool checksum(long long card_number)
