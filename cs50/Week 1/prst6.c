@@ -5,6 +5,7 @@
 bool check_valid(long long );
 int find_length(long long );
 bool checksum(long long );
+void print_ccn_company(long long );
 
 int main(void)
 {
@@ -51,3 +52,14 @@ bool checksum(long long card_number)
     return (sum % 10) ==  0;
 }
 
+void print_ccn_company(long long creadit_card_number)
+{
+    if ((creadit_card_number >= 34e13 && creadit_card_number < 35e13) || (creadit_card_number >= 37e13 && creadit_card_number < 38e13))
+      printf("AMEX\n");
+    else if (creadit_card_number >= 51e14 && creadit_card_number < 56e14)
+      printf("MASTERCARD\n");
+    else if ((creadit_card_number >= 4e12 && creadit_card_number < 5e12) || (creadit_card_number >= 4e15 && creadit_card_number < 5e15))
+      printf("VISA\n");
+    else
+      printf("INVALID\n");
+}
