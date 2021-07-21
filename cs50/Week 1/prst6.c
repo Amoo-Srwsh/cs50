@@ -1,5 +1,6 @@
 //luhn algorithm
 //github (Amoo-Srwsh)
+//creadit challenge
 #include <stdio.h>
 #include <cs50.h>
 
