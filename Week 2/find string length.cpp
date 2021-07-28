@@ -1,4 +1,4 @@
-//Nad code
+//Bad code
 #include <iostream>
 using namespace std;
 
