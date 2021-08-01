@@ -17,7 +17,7 @@ int strlen(string s, int &word, int &sentence, int &letter, int &results)
            if(s[i] == arrya_of_char[j-5])
              sentence++;
         }
-        if(s[i] == arrya_of_char[5])
+        if(s[i] == arrya_of_char[6])
             letter++;
     }
 
