@@ -2,8 +2,7 @@
 #include <iostream>
 using namespace std;
 
-char arrya_of_char [6] = {'!','.',',','?',':',' '};
-string cot = "'";
+char arrya_of_char [] = "!.,?:' ";
 
 int strlen(string s, int &word, int &sentence, int &letter, int &results)
 {
@@ -13,7 +12,7 @@ int strlen(string s, int &word, int &sentence, int &letter, int &results)
     {
         for(int j=1; j<=7; j++)
         {
-           if(s[i] == arrya_of_char[j] || s[i] == cot[0])
+           if(s[i] == arrya_of_char[j])
              space++;
            if(s[i] == arrya_of_char[j-5])
              sentence++;
