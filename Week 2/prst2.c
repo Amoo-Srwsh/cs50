@@ -31,7 +31,15 @@ int main(int argc, char* argv[])
 
     for (int i = 0; i < strlen(str); i++)
     {
-        //soon
+        char c = str[i];
+        if (isdigit(c))
+        {
+            
+        }
+        else
+        {
+            printf("%c", c);
+        }
     }
     
     return 0;
