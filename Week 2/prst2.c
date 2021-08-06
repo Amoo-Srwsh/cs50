@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdbool.h>
+#include <cs50.h>
 
-bool check_valid (char* s)
+bool check_valid (string s)
 {
     for (int i = 0; i < strlen(s); i++)
     {
@@ -14,7 +14,7 @@ bool check_valid (char* s)
     return true;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, string argv[])
 {
     if (argc != 2 || !check_valid(argv[1]))
     {
@@ -23,8 +23,7 @@ int main(int argc, char* argv[])
     }
 
     printf("plaintext:  ");
-    char str[100];
-    scanf("%s", &str);
+    string str = get_string("ciphertext: ");
 
 
     int k = atoi(argv[1]);
@@ -36,7 +35,7 @@ int main(int argc, char* argv[])
         if (isalpha(c))
         {
             char a = 'A';
-            if (!toupper(c))
+            if (tolower(c))
                 a = 'a';
             c = (c - a + k) % 26 + a;
             printf("%c", c);
@@ -44,6 +43,6 @@ int main(int argc, char* argv[])
         else
             printf("%c", c);
     }
-    
+
     return 0;
 }
