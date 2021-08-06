@@ -4,45 +4,52 @@
 #include <ctype.h>
 #include <cs50.h>
 
-bool check_valid (string s)
+bool check_valid(string s)
 {
     for (int i = 0; i < strlen(s); i++)
     {
-        if (isalpha(s[i]))
+        if (isdigit(s[i]))
+        {
             return false;
+        }
     }
+
     return true;
 }
 
 int main(int argc, string argv[])
 {
-    if (argc != 2 || !check_valid(argv[1]))
+    if (argc <= 1 || argc > 2 || check_valid(argv[1]))
     {
-        printf("Usage: ./caesar key\n");
+        printf("Error\n");
         return 1;
     }
 
-    printf("plaintext:  ");
-    string str = get_string("ciphertext: ");
-
-
     int k = atoi(argv[1]);
 
+    string plaintext = get_string("plaintext: ");
+
     printf("ciphertext: ");
-    for (int i = 0; i < strlen(str); i++)
+    for (int i = 0; i < strlen(plaintext); i++)
     {
-        char c = str[i];
+        char c = plaintext[i];
         if (isalpha(c))
         {
-            char a = 'A';
-            if (tolower(c))
-                a = 'a';
-            c = (c - a + k) % 26 + a;
-            printf("%c", c);
+            int a = 65;
+            if (!isupper(c))
+            {
+                a = 97;
+            }
+            printf("%c", (c - a + k) % 26 + a);
         }
         else
+        {
             printf("%c", c);
+        }
     }
+
+
+    printf("\n");
 
     return 0;
 }
