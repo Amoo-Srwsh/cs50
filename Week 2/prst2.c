@@ -29,17 +29,20 @@ int main(int argc, char* argv[])
 
     int k = atoi(argv[1]);
 
+    printf("ciphertext: ");
     for (int i = 0; i < strlen(str); i++)
     {
         char c = str[i];
-        if (isdigit(c))
+        if (isalpha(c))
         {
-            
-        }
-        else
-        {
+            char a = 'A';
+            if (!toupper(c))
+                a = 'a';
+            c = (c - a + k) % 26 + a;
             printf("%c", c);
         }
+        else
+            printf("%c", c);
     }
     
     return 0;
