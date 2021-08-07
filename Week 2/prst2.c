@@ -1,4 +1,4 @@
-//Amoo-Srwsh
+//github (Amoo-Srwsh)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
