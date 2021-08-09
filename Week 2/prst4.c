@@ -45,14 +45,14 @@ int main (int argc, string argv[])
     string str = get_string("plaintext: ");
 
     printf("ciphertext: ");
-    for (int i = 0; i < strlen(argv[1]); i++)
+    for (int i = 0; i < strlen(str); i++)
     {
         if (isalpha(str[i]))
         {
-            if (!tolower(str[i]))
+            if (isupper(str[i]))
             {
                 int a = str[i] - 64;
-                printf("%c", ch[a-1]);
+                printf("%c", toupper(ch[a-1]));
             }
             else
             {
