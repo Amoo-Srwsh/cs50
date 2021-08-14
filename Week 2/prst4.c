@@ -11,12 +11,19 @@ bool check_string (string s)
     {
         return true;
     }
+    int f[26] = { 0 };
     for (int i = 0; i < len; i++)
     {
         if (isdigit(s[i]))
         {
             return true;
         }
+        int index = toupper(s[i]) - 'A';
+        if (f[index] > 0)
+        {
+            return true;
+        }
+        f[index]++;
     }
 
     return false;
@@ -48,7 +55,7 @@ int main (int argc, string argv[])
                 int a = str[i] - 64;
                 printf("%c", toupper(chars[a-1]));
             }
-            else
+            else if (!isupper(str[i]))
             {
                 int a = str[i] - 96;
                 printf("%c", tolower(chars[a-1]));
