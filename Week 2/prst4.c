@@ -4,28 +4,22 @@
 #include <string.h>
 #include <ctype.h>
 
-char ch [25];
-
 bool check_string (string s)
 {
-    int check = 0;
-    for (int i = 0; i < strlen(s); i++)
-    {
-        if (isalpha(s[i]))
-        {
-            check++;
-            ch[i] = s[i];
-        }
-    }
-
-    if (check == 26)
-    {
-        return false;
-    }
-    else
+    int len = strlen(s);
+    if (len != 26)
     {
         return true;
     }
+    for (int i = 0; i < len; i++)
+    {
+        if (isdigit(s[i]))
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 int main (int argc, string argv[])
@@ -41,7 +35,7 @@ int main (int argc, string argv[])
         return 1;
     }
 
-
+    string chars = argv[1];
     string str = get_string("plaintext: ");
 
     printf("ciphertext: ");
@@ -52,12 +46,12 @@ int main (int argc, string argv[])
             if (isupper(str[i]))
             {
                 int a = str[i] - 64;
-                printf("%c", toupper(ch[a-1]));
+                printf("%c", toupper(chars[a-1]));
             }
             else
             {
                 int a = str[i] - 96;
-                printf("%c", tolower(ch[a-1]));
+                printf("%c", tolower(chars[a-1]));
             }
         }
         else
