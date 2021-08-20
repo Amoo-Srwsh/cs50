@@ -1,83 +1,78 @@
-#include <stdio.h>
 #include <cs50.h>
+#include <stdio.h>
 #include <string.h>
 
+// Max number of candidates
 #define MAX 9
 
-typedef struct candid
+// Candidates have name and vote count
+typedef struct
 {
-	string name;
-	int vote;
+    string name;
+    int votes;
+}
+candidate;
 
-} candid;
+// Array of candidates
+candidate candidates[MAX];
 
-candid candidates[MAX];
-int candida_count;
+// Number of candidates
+int candidate_count;
 
-bool valid (string name)
+// Function prototypes
+bool vote(string name);
+void print_winner(void);
+
+int main(int argc, string argv[])
 {
-	for (int i = 0; i < candida_count; i++)
-	{
-		if (strcmp(name, candidates[i].name) == 0)
-		{
-			candidates[i].vote++;
-			return 1;
-		}
-	}
+    // Check for invalid usage
+    if (argc < 2)
+    {
+        printf("Usage: plurality [candidate ...]\n");
+        return 1;
+    }
 
-	return 0;
+    // Populate array of candidates
+    candidate_count = argc - 1;
+    if (candidate_count > MAX)
+    {
+        printf("Maximum number of candidates is %i\n", MAX);
+        return 2;
+    }
+    for (int i = 0; i < candidate_count; i++)
+    {
+        candidates[i].name = argv[i + 1];
+        candidates[i].votes = 0;
+    }
+
+    int voter_count = get_int("Number of voters: ");
+
+    // Loop over all voters
+    for (int i = 0; i < voter_count; i++)
+    {
+        string name = get_string("Vote: ");
+
+        // Check for invalid vote
+        if (!vote(name))
+        {
+            printf("Invalid vote.\n");
+        }
+    }
+
+    // Display winner of election
+    print_winner();
 }
 
-void print_winer (void)
+// Update vote totals given a new vote
+bool vote(string name)
 {
-	int user = candidates[0].vote;
-	string name = candidates[0].name;
-
-	for (int i = 0; i < candida_count; i++)
-	{
-		if (user < candidates[i].vote)
-		{
-			name = candidates[i].name;
-		}
-	}
-	printf("%s\n", name);
+    // TODO
+    return false;
 }
 
-
-int main (int argc, string argv[])
+// Print the winner (or winners) of the election
+void print_winner(void)
 {
-	if (argc < 2)
-	{
-		printf("Error");
-		return 1;
-	}
-
-	candida_count = argc - 1;
-	if (candida_count > MAX)
-	{
-		printf("Maximum number of candida is %i\n", MAX);
-		return 2;
-	}
-	for (int i = 0; i < candida_count; i++)
-	{
-		candidates[i].name = argv[i + 1];
-		candidates[i].vote = 0;
-	}
-
-	int voiter_count = get_int("Number of voters: ");
-
-	for (int i = 0; i < voiter_count; i++)
-	{
-		string name = get_string("");
-
-		//check valid name
-		if (!valid(name))
-		{
-			printf("invalid vote. \n");
-		}
-	}
-
-	print_winer();
-
-	return 0;
+    // TODO
+    return;
 }
