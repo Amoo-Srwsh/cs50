@@ -45,10 +45,12 @@ int main(int argc, string argv[])
         candidates[i].votes = 0;                //و تک تک نام ها باید در حال ٠ باشند
     }
 
-    int voter_count = get_int("Number of voters: ");     //تعداد ری دهنده هارو داریم از کاربر میگیریم اگه ٥ باشد ٥ نفر ری میدن
+    int voter_count =
+        get_int("Number of voters: ");     //تعداد ری دهنده هارو داریم از کاربر میگیریم اگه ٥ باشد ٥ نفر ری میدن
 
     // Loop over all voters
-    for (int i = 0; i < voter_count; i++)                //گفتم اگه ٥ باشد ٥ بار از کاربرها نام میگیریم،
+    for (int i = 0; i < voter_count;
+         i++)                //گفتم اگه ٥ باشد ٥ بار از کاربرها نام میگیریم،
     {
         string name = get_string("Vote: ");              //تک تک اسم هارو از کاربرها دریافت میکنم
 
