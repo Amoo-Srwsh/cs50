@@ -72,7 +72,7 @@ int main(int argc, string argv[])
             string name = get_string("Rank %i: ", j + 1);
 
             // Record vote, unless it's invalid
-            if (!vote(i, j, name))
+            if (!vote(i, j, name))  //[i] is voter //[j] ovlaviat
             {
                 printf("Invalid vote.\n");
                 return 4;
@@ -124,11 +124,31 @@ int main(int argc, string argv[])
     return 0;
 }
 
+return 2;
+}
+
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
-    // TODO
-    return false;
+	int candidate;
+	for (int i = 0; i < candidate_count; i++)
+	{
+		if (strcmp(name, candidates[i].name) == 0)
+		{
+			candidate = i;
+			break;
+		}
+		candidate = 10;
+	}
+
+	if (candidate == 10)
+	{
+		return false;
+	}
+	
+	preferences[voter][rank] = candidate;
+	
+	return true;
 }
 
 // Tabulate votes for non-eliminated candidates
