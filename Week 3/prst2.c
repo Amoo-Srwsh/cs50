@@ -82,6 +82,8 @@ int main(int argc, string argv[])
         printf("\n");
     }
 
+    //////////////////////////////////////////////////////////
+
     // Keep holding runoffs until winner exists
     while (true)
     {
@@ -146,38 +148,30 @@ void tabulate(void)
 {
 	for (int i = 0; i < voter_count; i++)
 	{
-		for (int j = 0; j < candidate_count; j++)
+		fro (int j = 0; j < candidate_count; j++)
 		{
 			if (canidates[preferences[i][j]].eliminated == false)
 			{
-				candidates[preferences[i][j]].vote++;
+				candidates[preferences[i][j]].votes++;
 				break;
 			}
 		}
 	}
 }
 
-
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    int winner = candidates[0].votes;
-    for (int i = 0; i < candidate_count; i++)
-    {
-	    if (candidates[i].votes > winner)
-	    {
-		    winner = candidates[0].votes;
-	    }
-    }
-    for (int i = 0; i < candidate_count; i++)
-    {
-	    if (candidates[i].vote == winner)
-	    {
-		    printf("%s\n", candidates[i].name);
-		    return true;
-	    }
-    }
-    return false;
+	for (int i = 0; i < candidate_count; i++)
+	{
+		if (candidates[i].votes > voter_count / 2)
+		{
+			printf("%s\n", candidates[i].name);
+			return true;
+		}
+	}
+	
+	return false;
 }
 
 // Return the minimum number of votes any remaining candidate has
