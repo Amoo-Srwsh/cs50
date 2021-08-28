@@ -146,9 +146,78 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    // TODO
+    int tmep;
+    for (int i = 0; i < pair_count; i++)
+    {
+		for  (int j = 0; j < pair_count; j++)
+		{
+			//preferences
+			/////////////////
+			// 0 || 3 || 2 ||
+			// 2 || 0 || 2 ||
+			// 3 || 3 || 0 ||
+			/////////////////
+			/*
+
+			     |  (step (1)(1)
+			    \ /
+			? preferences[0][1] < preferences[1][0]
+			(false)
+
+			///////////////////////////////////////
+
+			     |  (step (2)(1)
+			    \ /
+			? preferences[0][1] < preferences[2][0]
+			(false)
+
+			///////////////////////////////////////
+			     
+			     |  (step (3)(1)
+			    \ /
+			? preferences[0][1] <  preferences[2][[1]
+			(false)
+
+			///////////////////////////////////////
+			///////////////////////////////////////
+			
+			     |  (step (1)(2)
+			    \ /
+			? preferences[2][0] < preferences[0][1]
+			(false)
+
+			//////////////////////////////////////
+			
+			     |  (step (2)(2)
+			    \ /
+		   	? preferences[2][0] < preferences[2][0]
+			(false)
+
+			///////////////////////////////////////
+
+			      |  (step (3)(2)
+			     \ /
+			? preferences[2][0] <  preferences[2][1]
+			(false)
+
+			///////////////////////////////////////
+			.
+			..
+			...
+			*/
+
+			if (preferences[pairs[i].winner][pairs[i].loser] < preferences[pairs[j].winner][pairs[j].loser])
+			{
+				temp =  pairs[i];
+               			pairs[i] = pairs[j];
+              			pairs[j] = temp;
+			}
+		}
+    }
+
     return;
 }
+
 
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
