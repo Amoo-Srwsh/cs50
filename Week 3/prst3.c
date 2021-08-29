@@ -125,6 +125,7 @@ void record_preferences(int ranks[])
             preferences[ranks[i]][ranks[j]]++;
         }
     }
+
     return;
 }
 
@@ -132,19 +133,23 @@ void record_preferences(int ranks[])
 void add_pairs(void)
 {
     for (int i = 0; i < candidate_count; i++)
-   	{
-	 	 for (int j = 0; j < candidate_count; j++)
-	  	 {
-		 	  if (preferences[i][j] > preferences[j][i])
-		  	  {
-			      pairs[pair_count].winner = i;
-			      pairs[pair_count].loser  = j;
-			      pair_count += 1;
-		  	  }
-	    	}
-    	}
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (preferences[i][j] > preferences[j][i])
+            {
+                pair p;
+                p.winner = i;
+                p.loser = j;
+                pairs[pair_count++] = p;
 
-   	return;
+            }
+
+        }
+
+    }
+
+    return;
 }
 
 int compare(const void *e1, const void *e2)
@@ -173,9 +178,12 @@ bool has_cycle_helper(int index, bool visited[])
     visited[index] = true;
     for (int i = 0; i < candidate_count; i++)
     {
-        if ((locked[index][i]) && (has_cycle_helper(i, visited)))
+        if (locked[index][i])
         {
-            return true;
+            if (has_cycle_helper(i, visited))
+            {
+                return true;
+            }
         }
     }
     return false;
@@ -198,7 +206,6 @@ void lock_pairs(void)
     for (int i = 0; i < pair_count; i++)
     {
         locked[pairs[i].winner][pairs[i].loser] = true;
-        //check for cycle
         if (has_cycle(i))
         {
             locked[pairs[i].winner][pairs[i].loser] = false;
@@ -230,6 +237,7 @@ int get_source()
     }
     return -1;
 }
+
 // Print the winner of the election
 void print_winner(void)
 {
