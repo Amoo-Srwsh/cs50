@@ -7,6 +7,9 @@
 // Number of bytes in .wav header
 const int HEADER_SIZE = 44;
 
+typedef uint8_t ONE_BYTE;
+typedef int16_t AUDIO_BYTE;
+
 int main(int argc, char *argv[])
 {
     // Check command-line arguments
