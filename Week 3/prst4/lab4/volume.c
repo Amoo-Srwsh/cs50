@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 // Number of bytes in .wav header
-const int HEADER_SIZE = 44;
+const int HEADER_SIZE = 44;  //Read Only
 
 typedef uint8_t ONE_BYTE;
 typedef int16_t AUDIO_BYTE;
