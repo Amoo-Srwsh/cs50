@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
     // Open files and determine scaling factor
     FILE *input = fopen(argv[1], "r"), *output = fopen(argv[2], "w");
-    if (input == NULL || output == NULL)
+    if (!input || !output)
     {
         printf("Could not open file.\n");
         return 1;
